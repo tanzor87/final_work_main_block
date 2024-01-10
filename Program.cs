@@ -3,6 +3,13 @@
 // либо задать на старте выполнения алгоритма. При решении не рекомендуется пользоваться коллекциями,
 // лучше обойтись исключительно массивами.
 
+int lenOfSymbols = 3;
+
+// string[] arrayString = {"Hello", "2", "world", ":-)"};
+string[] arrayString = {"1234", "1567", "-2", "computer science"};
+// string[] arrayString = {"Russia", "Denmark", "Kazan"};
+
+
 void printArray (string[] array, string message = "")
 {
     if (message != "")
@@ -12,34 +19,25 @@ void printArray (string[] array, string message = "")
     Console.WriteLine($"[{string.Join(", ", array)}]");
 }
 
-
-
-
-
-// string[] stringArray = {"Hello", "2", "world", ":-)"};
-string[] stringArray = {"1234", "1567", "-2", "computer science"};
-// string[] stringArray = {"Russia", "Denmark", "Kazan"};
-
-string str = "";
-for (int i = 0; i < stringArray.Length; i++)
+string[] newArray (string[] array, int number)
 {
-    if (stringArray[i].Length <= 3)
+    string str = "";
+    for (int i = 0; i < array.Length; i++)
     {
-        if (i != stringArray.Length - 1)
+        if (array[i].Length <= number)
         {
-            str += stringArray[i] + " ";
-        }
-        else
-        {
-            str += stringArray[i];
+            str += array[i] + " ";
         }
     }
+
+    str = str.Trim();
+    string[] newArray = str.Split(" ");
+    
+    return newArray;
 }
 
-string[] stringNewArray = str.Split(" ");
+string[] newArrayString = newArray(arrayString, lenOfSymbols);
 
-printArray(stringArray, "Старый массив: ");
-printArray(stringNewArray, "Новый массив: ");
+printArray(arrayString, "Старый массив: ");
+printArray(newArrayString, "Новый массив: ");
 
-// Console.WriteLine($"Старый массив: [{string.Join(", ", stringArray)}]");
-// Console.WriteLine($"Новый массив: [{string.Join(", ", stringNewArray)}]");
